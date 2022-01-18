@@ -12,18 +12,19 @@
 
 <body>
         
-    <div>
+    <div class="container-fluid">
         <!-- Header -->
         <div class="row">
             <div class="header col-12 navbar navbar-light bg-dark">
                 <a class="navbar" href="index.html">
                     <img src="/img/bike-logo.svg" width="50" height="50" class="logo" alt="">
-                    The bike shop experince
+                    <script src="<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"></script>
+                    The bike shop experience
                 </a>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row ariane">
             <nav aria-label="breadcrumb" class="col-12">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Shop</a></li>
@@ -34,6 +35,40 @@
 
 
         <h1>Basket</h1>
+
+        <div class="row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Del</th>
+                </tr>
+            </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><img src="img/bike-4.jpg" alt=""></td>
+                    <td>
+                        <form type="text" name="quantity" value="1" >
+                        <button class="btn btn-outline-info btn-sm" name="button"><i class="far fa-trash-alt"></i> 
+                        </button>
+                    </form>
+                    </td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+
+
 
     </div>
 

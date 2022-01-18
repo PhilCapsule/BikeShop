@@ -1,0 +1,15 @@
+/* ------------- Body ----------------*/
+body{
+    background-color: #ffffff;
+
+}
+
+/*-------------- Home Page ------------*/
+.jumbotron {
+    background-color: url('img/bike-background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+}
+
+

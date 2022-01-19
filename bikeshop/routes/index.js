@@ -44,6 +44,11 @@ router.get('/delete-shop', function(req, res, next){
 
 // Update 
 router.get('/update-shop', function(req, res, next){
+  
+  var position = req.body.position;
+  var newQuantity = req.body.quantity;
+
+  dataCardBike[position].quantity = newQuantity;
 
   res.render('shop', {dataCardBike:dataCardBike})
 })

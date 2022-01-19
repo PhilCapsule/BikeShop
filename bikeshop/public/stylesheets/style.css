@@ -6,7 +6,7 @@ body{
 
 /*-------------- Home Page ------------*/
 .jumbotron {
-    background-color: url('img/bike-background.jpg');
+    background-color: url('/images/bike-background.jpg');
     background-size: cover;
     background-position: center;
     height: 150px;

@@ -60,20 +60,21 @@
                         for(var i=0;i<dataCardBike.length;i++){
                         %>
                             <tr class="basket-item">
-                                <th scope="row">1</th>
+                                <th scope="row"><%=i%></th>
                                 <td><img src=<%= dataCardBike[i].url %> class="basket-img"></td>
                                 <td>
                                     <%= dataCardBike[i].name %>
                                 </td>
                                 <td>
-                                    <form>
+                                    <form action="/update-shop" method="POST">
+                                        <input type="hidden" name="position" value="<%=i%>">
                                         <input type="text" name="quantity" value="<%= dataCardBike[i].quantity%>">
-                                        <button class="btn btn-outline-info btn-sm" name="button"><i class="fas fa-sync-alt"></i></button>
+                                        <button type="submit" class="btn btn-outline-info btn-sm" name="button"><i class="fas fa-sync-alt"></i></button>
                                     </form>
                                 </td>
                                 <td><%= dataCardBike[i].price %>€</td>
                                 <td><%= dataCardBike[i].price * dataCardBike[i].quantity %>€</td>
-                                <td><button class="btn btn-outline-info btn-sm" name="button"><i class="far fa-trash-alt"></i></button></td>
+                                <td><a href="/delete-shop?position=<%=i%>"><button class="btn btn-outline-info btn-sm" name="button"><i class="far fa-trash-alt"></i></button></a></td>
                             </tr>
                         <%
                             totalCmd += dataCardBike[i].price * dataCardBike[i].quantity;

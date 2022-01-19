@@ -21,7 +21,33 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/shop', function(req, res, next) {
+  console.log(req.query, "ici");
+  dataCardBike.push({
+    name: req.query.bikeNameFromFront,
+    url: req.query.bikeImageFromFront,
+    price: req.query.bikePriceFromFront,
+    quantity: 1
+  })
+
   res.render('shop', {dataCardBike:dataCardBike});
 });
+
+
+// Path delete 
+router.get('/delete-shop', function(req, res, next){
+  
+  dataCardBike.splice(req.query.position,1)
+
+  res.render('shop', {dataCardBike:dataCardBike})
+})
+
+
+// Update 
+router.get('/update-shop', function(req, res, next){
+
+  res.render('shop', {dataCardBike:dataCardBike})
+})
+
+
 
 module.exports = router;

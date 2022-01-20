@@ -10,34 +10,54 @@ var dataBike = [
   {name:"LIK099", url:"/images/bike-6.jpg", price:869},
 ]
 
-var dataCardBike = [
-  {name:"BIK045", url:"/images/bike-1.jpg", price:679, quantity:1},
-  {name:"ZOOK07", url:"/images/bike-2.jpg", price:999, quantity:2},
-]
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
+  if(req.session.dataCardBike == undefined){
+    req.session.dataCardBike = []
+  }
   res.render('index', {dataBike:dataBike});
 });
+ 
 
+// Shop
 router.get('/shop', function(req, res, next) {
 
-  dataCardBike.push({
-    name: req.query.bikeNameFromFront,
-    url: req.query.bikeImageFromFront,
-    price: req.query.bikePriceFromFront,
-    quantity: 1
-  })
+  var alreadyExist = false;
 
-  res.render('shop', {dataCardBike:dataCardBike});
+  for(var i = 0; req.session.dataCardBike.length; i++){
+    if(req.session.dataCardBike[i].name == req.query.bikeNameFromFront){
+    req.session.dataCardBike[i].quantity = req.session.dataCardBike[i].quantity +1;
+    alreadyExist = true;
+    }
+  }
+
+  if(alreadyExist == false){
+    req.session.dataCardBike.push({
+      name: req.query.bikeNameFromFront,
+      url: req.query.bikeImageFromFront,
+      price: req.query.bikePriceFromFront,
+      quantity: 1
+    })
+  }
+
+
+
+  res.render('shop', {dataCardBike:req.session.dataCardBike});
 });
 
+
+//shop
 router.get('/delete-shop', function(req, res, next){
   
-  dataCardBike.splice(req.query.position,1)
+  req.session.dataCardBike.splice(req.query.position,1)
 
-  res.render('shop',{dataCardBike:dataCardBike})
+  res.render('shop',{dataCardBike:req.session.dataCardBike})
 })
+
+
 
 router.post('/update-shop', function(req, res, next){
   
@@ -46,7 +66,7 @@ router.post('/update-shop', function(req, res, next){
 
   dataCardBike[position].quantity = newQuantity;
 
-  res.render('shop',{dataCardBike:dataCardBike})
+  res.render('shop',{dataCardBike:req.session.dataCardBike})
 })
 
 module.exports = router;

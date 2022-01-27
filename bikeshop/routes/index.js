@@ -23,6 +23,9 @@ router.get('/', function (req, res, next) {
   res.render('index', { dataBike: dataBike });
 });
 
+
+
+//  if double
 router.get('/shop', function (req, res, next) {
 
   if (req.session.dataCardBike == undefined) {
@@ -49,6 +52,8 @@ router.get('/shop', function (req, res, next) {
   res.render('shop', { dataCardBike: req.session.dataCardBike });
 });
 
+
+// DELETE 
 router.get('/delete-shop', function (req, res, next) {
 
   if (req.session.dataCardBike == undefined) {
@@ -74,6 +79,9 @@ router.post('/update-shop', function (req, res, next) {
   res.render('shop', { dataCardBike: req.session.dataCardBike })
 })
 
+
+
+// create Session Stripe
 router.post('/create-checkout-session', async (req, res) => {
 
   if (req.session.dataCardBike == undefined) {

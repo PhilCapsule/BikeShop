@@ -23,6 +23,11 @@ router.get('/', function (req, res, next) {
   res.render('index', { dataBike: dataBike });
 });
 
+//detail Bike picture description 
+router.get('/detailbike', function(req, res, next){
+  res.render('detailbike')
+})
+
 
 
 //  if double
@@ -65,6 +70,8 @@ router.get('/delete-shop', function (req, res, next) {
   res.render('shop', { dataCardBike: req.session.dataCardBike })
 })
 
+
+// BTN refresh item list shop 
 router.post('/update-shop', function (req, res, next) {
 
   if (req.session.dataCardBike == undefined) {
@@ -114,6 +121,8 @@ router.post('/create-checkout-session', async (req, res) => {
   res.redirect(303, session.url);
 });
 
+
+// to confirm from stripe 
 router.get('/confirm', function (req, res, next) {
   res.render('confirm')
 })
